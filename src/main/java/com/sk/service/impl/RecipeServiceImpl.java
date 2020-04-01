@@ -10,4 +10,5 @@ public class RecipeServiceImpl implements RecipeService {
     public String getRecipes() {
         return "cakes";
     }
+
 }
