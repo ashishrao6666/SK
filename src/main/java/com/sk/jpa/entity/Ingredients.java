@@ -1,28 +1,34 @@
 package com.sk.jpa.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "INGREDIENTS")
-public class Ingredients {
-   /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Recipe recipe; */
+public class Ingredients implements Serializable {
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Recipe recipe;
 
-   //@Column(name = "recipe_id")
-   // private int recipeId;
+
+    private int recipeId;
     @Id
+    @Column(name = "id")
     private int id;
     private String name;
     private int quantity;
 
-   /* public int getRecipeId() {
+    public Ingredients(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    public int getRecipeId() {
         return recipeId;
     }
 
     public void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
-    }*/
+    }
 
     public int getId() {
         return id;

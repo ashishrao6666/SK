@@ -25,12 +25,13 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<RecipeView> getRecipes() {
         List<Recipe> recipeList = recipeRepo.findAll();
-        List <RecipeView> recipeViewList = new ArrayList<>();
+        List<RecipeView> recipeViewList = new ArrayList<>();
         for (Recipe recipe : recipeList) {
             RecipeView recipeView = new RecipeView();
             recipeView.setId(recipe.getId());
             recipeView.setName(recipe.getName());
-            List <Ingredients> ingredientsList = ingredientsRepo.findAllById(recipe.getId());
+            recipeView.setInstructions(recipe.getIntr());
+            List <Ingredients> ingredientsList = ingredientsRepo.findById(recipe.getId());
             List <IngredientsView> ingredientsViews = new ArrayList<>();
             for (Ingredients ingredients : ingredientsList) {
                 IngredientsView ingredientsView = new IngredientsView();

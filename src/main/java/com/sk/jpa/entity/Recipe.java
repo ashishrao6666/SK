@@ -1,5 +1,6 @@
 package com.sk.jpa.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,8 +10,11 @@ import java.io.Serializable;
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
     @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "intr")
     private String intr;
 
     public int getId() {
