@@ -10,11 +10,11 @@ import java.io.Serializable;
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
     @Id
-    @Column(name = "id")
+    @Column(name = "r_id")
     private int id;
-    @Column(name = "name")
+    @Column(name = "r_name")
     private String name;
-    @Column(name = "intr")
+    @Column(name = "r_intr")
     private String intr;
 
     public int getId() {

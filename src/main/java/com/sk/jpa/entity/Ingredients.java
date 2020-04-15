@@ -7,13 +7,13 @@ import java.io.Serializable;
 @Table(name = "INGREDIENTS")
 public class Ingredients implements Serializable {
     @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "i_id")
     private Recipe recipe;
 
 
     private int recipeId;
     @Id
-    @Column(name = "id")
+    @Column(name = "r_id")
     private int id;
     private String name;
     private int quantity;
