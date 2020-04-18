@@ -1,10 +1,8 @@
 package com.sk.jpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "RECIPE")
@@ -16,6 +14,10 @@ public class Recipe implements Serializable {
     private String name;
     @Column(name = "r_intr")
     private String intr;
+
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "recipe_id")
+    private List<Ingredients> ingredients;
 
     public int getId() {
         return id;
@@ -39,5 +41,13 @@ public class Recipe implements Serializable {
 
     public void setIntr(String intr) {
         this.intr = intr;
+    }
+
+    public List<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredients> ingredients) {
+        this.ingredients = ingredients;
     }
 }

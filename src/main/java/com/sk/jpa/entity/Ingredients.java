@@ -6,29 +6,17 @@ import java.io.Serializable;
 @Entity
 @Table(name = "INGREDIENTS")
 public class Ingredients implements Serializable {
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "i_id")
-    private Recipe recipe;
+   /* @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe; */
 
-
-    private int recipeId;
     @Id
-    @Column(name = "r_id")
+    @Column(name = "i_id")
     private int id;
+    @Column(name = "i_name")
     private String name;
+    @Column(name = "i_quantity")
     private int quantity;
-
-    public Ingredients(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public int getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(int recipeId) {
-        this.recipeId = recipeId;
-    }
 
     public int getId() {
         return id;

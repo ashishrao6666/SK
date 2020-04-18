@@ -31,7 +31,8 @@ public class RecipeServiceImpl implements RecipeService {
             recipeView.setId(recipe.getId());
             recipeView.setName(recipe.getName());
             recipeView.setInstructions(recipe.getIntr());
-            List <Ingredients> ingredientsList = ingredientsRepo.findById(recipe.getId());
+           // List <Ingredients> ingredientsList = ingredientsRepo.findById(recipe.getId());
+            List <Ingredients> ingredientsList = recipe.getIngredients();
             List <IngredientsView> ingredientsViews = new ArrayList<>();
             for (Ingredients ingredients : ingredientsList) {
                 IngredientsView ingredientsView = new IngredientsView();
