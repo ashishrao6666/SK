@@ -5,10 +5,7 @@ import com.sk.jpa.entity.Recipe;
 import com.sk.service.RecipeService;
 import com.sk.view.RecipeView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +23,15 @@ public class MyController {
 
     @GetMapping("/recipes")
     @ResponseBody
-    public List<RecipeView> recipe() {
+    public List<RecipeView> getAllRecipes() {
         return recipeService.getRecipes();
     }
     // Implement some more
+
+    @GetMapping("/recipes/{id}")
+    @ResponseBody
+    public RecipeView getRecipeById(@PathVariable int id) {
+        return recipeService.getRecipeById(id);
+    }
+
 }

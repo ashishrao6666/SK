@@ -27,23 +27,36 @@ public class RecipeServiceImpl implements RecipeService {
         List<Recipe> recipeList = recipeRepo.findAll();
         List<RecipeView> recipeViewList = new ArrayList<>();
         for (Recipe recipe : recipeList) {
-            RecipeView recipeView = new RecipeView();
-            recipeView.setId(recipe.getId());
-            recipeView.setName(recipe.getName());
-            recipeView.setInstructions(recipe.getIntr());
-           // List <Ingredients> ingredientsList = ingredientsRepo.findById(recipe.getId());
-            List <Ingredients> ingredientsList = recipe.getIngredients();
-            List <IngredientsView> ingredientsViews = new ArrayList<>();
-            for (Ingredients ingredients : ingredientsList) {
-                IngredientsView ingredientsView = new IngredientsView();
-                ingredientsView.setName(ingredients.getName());
-                ingredientsView.setQuantity(ingredients.getQuantity());
-                ingredientsViews.add(ingredientsView);
-            }
-            recipeView.setIngredients(ingredientsViews);
+            RecipeView recipeView = getRecipeView(recipe);
             recipeViewList.add(recipeView);
         }
         return recipeViewList;
     }
 
+    @Override
+    public RecipeView getRecipeById(int id) {
+        final Recipe recipe = recipeRepo.findById(id);
+        if (recipe != null) {
+            return getRecipeView(recipe);
+        }
+        return null;
+    }
+
+
+    private RecipeView getRecipeView(Recipe recipe) {
+        RecipeView recipeView = new RecipeView();
+        recipeView.setId(recipe.getId());
+        recipeView.setName(recipe.getName());
+        recipeView.setInstructions(recipe.getIntr());
+        List<Ingredients> ingredientsList = recipe.getIngredients();
+        List <IngredientsView> ingredientsViews = new ArrayList<>();
+        for (Ingredients ingredients : ingredientsList) {
+            IngredientsView ingredientsView = new IngredientsView();
+            ingredientsView.setName(ingredients.getName());
+            ingredientsView.setQuantity(ingredients.getQuantity());
+            ingredientsViews.add(ingredientsView);
+        }
+        recipeView.setIngredients(ingredientsViews);
+        return recipeView;
+    }
 }
