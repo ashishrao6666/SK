@@ -8,6 +8,7 @@ public interface RecipeService {
     public List<RecipeView> getRecipes();
     public RecipeView getRecipeById(int id);
     public void deleteAll();
+    void deleteById(int id);
 }
 
 

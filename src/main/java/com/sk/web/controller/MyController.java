@@ -40,4 +40,10 @@ public class MyController {
         return "Database is cleared";
     }
 
+    @GetMapping ("/clear/{id}")
+    @ResponseBody
+    public String deleteId(@PathVariable int id) {
+        recipeService.deleteById(id);
+        return "recipe id number " +id +" deleted";
+    }
 }
