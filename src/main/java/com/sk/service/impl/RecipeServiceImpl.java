@@ -42,6 +42,12 @@ public class RecipeServiceImpl implements RecipeService {
         return null;
     }
 
+    @Override
+    public void deleteAll() {
+        ingredientsRepo.deleteAll();
+        recipeRepo.deleteAll();
+    }
+
 
     private RecipeView getRecipeView(Recipe recipe) {
         RecipeView recipeView = new RecipeView();

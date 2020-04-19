@@ -9,5 +9,6 @@ import java.util.List;
 public interface RecipeRepo extends CrudRepository<Recipe, Integer> {
     Recipe findById(int id);
     List<Recipe> findAll();
+    void deleteAll();
 }
 

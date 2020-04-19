@@ -26,12 +26,18 @@ public class MyController {
     public List<RecipeView> getAllRecipes() {
         return recipeService.getRecipes();
     }
-    // Implement some more
 
     @GetMapping("/recipes/{id}")
     @ResponseBody
     public RecipeView getRecipeById(@PathVariable int id) {
         return recipeService.getRecipeById(id);
+    }
+
+    @GetMapping("/clear")
+    @ResponseBody
+    public String deleted() {
+        recipeService.deleteAll();
+        return "Database is cleared";
     }
 
 }
