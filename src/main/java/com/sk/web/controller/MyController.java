@@ -2,7 +2,9 @@ package com.sk.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sk.jpa.entity.Recipe;
+import com.sk.service.InventoryService;
 import com.sk.service.RecipeService;
+import com.sk.view.InventoryView;
 import com.sk.view.RecipeView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ public class MyController {
 
     @Autowired
     private RecipeService recipeService;
+    private InventoryService inventoryService;
+
 
     @CrossOrigin(origins = "https://serverless-kitchen.3rik.se")
     @GetMapping("/ping")
@@ -45,5 +49,11 @@ public class MyController {
     public String deleteId(@PathVariable int id) {
         recipeService.deleteById(id);
         return "recipe id number " +id +" deleted";
+    }
+
+    @GetMapping("/inventory")
+    @ResponseBody
+    public List<InventoryView> getAllInventories() {
+        return inventoryService.getInventory();
     }
 }
