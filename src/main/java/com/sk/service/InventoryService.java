@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface InventoryService {
     public List<InventoryView> getInventory();
-    public IngredientsView getInventoryById(int id);
 }

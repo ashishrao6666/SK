@@ -3,7 +3,6 @@ package com.sk.service.impl;
 import com.sk.jpa.entity.Inventory;
 import com.sk.repo.InventoryRepo;
 import com.sk.service.InventoryService;
-import com.sk.view.IngredientsView;
 import com.sk.view.InventoryView;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,15 +25,10 @@ public class InventoryServiceImpl implements InventoryService
         return inventoryViewList;
     }
 
-    @Override
-    public IngredientsView getInventoryById(int id) {
-        return null;
-    }
-
     private InventoryView getInventoryView(Inventory inventory) {
         InventoryView inventoryView = new InventoryView();
-        inventoryView.setInv_quantity(inventory.getInv_quantity());
-        inventoryView.setInv_name(inventory.getInv_name());
+        inventoryView.setQuantity(inventory.getInv_quantity());
+        inventoryView.getName(inventory.getInv_name());
         return inventoryView;
     }
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface IngredientsRepo extends CrudRepository<Ingredients, Integer> {
-    //Ingredients findById(int id);
     List <Ingredients> findById(int id);
     void deleteAll();
     void deleteById(int id);

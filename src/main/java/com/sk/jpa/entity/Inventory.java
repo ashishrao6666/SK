@@ -6,7 +6,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "INVENTORY")
 public class Inventory implements Serializable {
-
     @Id
     @Column(name = "inv_id")
     private int inv_id;
