@@ -1,6 +1,5 @@
 package com.sk.web.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sk.jpa.entity.Recipe;
 import com.sk.service.InventoryService;
 import com.sk.service.RecipeService;
@@ -55,5 +54,11 @@ public class MyController {
     @ResponseBody
     public List<InventoryView> getAllInventories() {
         return inventoryService.getInventory();
+    }
+
+    @PostMapping("recipes/create")
+    @ResponseBody
+    public void createRecipes(Recipe recipe) {
+        recipeService.createRecipes(recipe);
     }
 }

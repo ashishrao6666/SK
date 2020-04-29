@@ -54,6 +54,11 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepo.deleteById(id);
     }
 
+    @Override
+    public <recipe> void createRecipes(Recipe recipe) {
+        recipeRepo.save(recipe);
+    }
+
 
     private RecipeView getRecipeView(Recipe recipe) {
         RecipeView recipeView = new RecipeView();

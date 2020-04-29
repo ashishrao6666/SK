@@ -11,5 +11,6 @@ public interface RecipeRepo extends CrudRepository<Recipe, Integer> {
     List<Recipe> findAll();
     void deleteAll();
     void deleteById(int id);
+    List<Recipe> save(Recipe recipe);
 }
 
