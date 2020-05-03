@@ -7,6 +7,7 @@ import com.sk.repo.RecipeRepo;
 import com.sk.service.RecipeService;
 import com.sk.view.IngredientsView;
 import com.sk.view.RecipeView;
+import com.sk.view.request.RecipeRequestView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +56,12 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public <recipe> void createRecipes(Recipe recipe) {
+    public void createRecipes(RecipeRequestView recipeRequestView) {
+        Recipe recipe = new Recipe();
+        recipe.setIntr(recipeRequestView.getInstructions());
+        recipe.setName(recipeRequestView.getName());
         recipeRepo.save(recipe);
+        System.out.println("Resasdsd" + recipe.getId());
     }
 
 

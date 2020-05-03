@@ -8,6 +8,8 @@ import java.util.List;
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="recipe_seq_gen")
+    @SequenceGenerator(name="recipe_seq_gen", sequenceName="RECIPE_SEQ", allocationSize = 1)
     @Column(name = "r_id")
     private int id;
     @Column(name = "r_name")

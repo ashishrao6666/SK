@@ -6,11 +6,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "INGREDIENTS")
 public class Ingredients implements Serializable {
-   /* @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "recipe_id")
-    private Recipe recipe; */
 
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ingredients_seq_gen")
+    @SequenceGenerator(name="ingredients_seq_gen", sequenceName="INGREDIENTS_SEQ", allocationSize = 1)
     @Column(name = "i_id")
     private int id;
     @Column(name = "i_name")

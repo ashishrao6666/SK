@@ -1,6 +1,6 @@
-package com.sk.view;
+package com.sk.view.request;
 
-public class InventoryView {
+public class IngredientsRequestView {
     private int quantity;
     private String name;
 

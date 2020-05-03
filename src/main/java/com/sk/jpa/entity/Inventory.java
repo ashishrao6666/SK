@@ -8,33 +8,33 @@ import java.io.Serializable;
 public class Inventory implements Serializable {
     @Id
     @Column(name = "inv_id")
-    private int inv_id;
+    private int invId;
     @Column(name = "inv_name")
-    private String inv_name;
+    private String invName;
     @Column(name = "inv_quantity")
-    private int inv_quantity;
+    private int invQuantity;
 
-    public int getInv_id() {
-        return inv_id;
+    public int getInvId() {
+        return invId;
     }
 
-    public void setInv_id(int inv_id) {
-        this.inv_id = inv_id;
+    public void setInvId(int invId) {
+        this.invId = invId;
     }
 
-    public String getInv_name() {
-        return inv_name;
+    public String getInvName() {
+        return invName;
     }
 
-    public void setInv_name(String inv_name) {
-        this.inv_name = inv_name;
+    public void setInvName(String invName) {
+        this.invName = invName;
     }
 
-    public int getInv_quantity() {
-        return inv_quantity;
+    public int getInvQuantity() {
+        return invQuantity;
     }
 
-    public void setInv_quantity(int inv_quantity) {
-        this.inv_quantity = inv_quantity;
+    public void setInvQuantity(int invQuantity) {
+        this.invQuantity = invQuantity;
     }
 }

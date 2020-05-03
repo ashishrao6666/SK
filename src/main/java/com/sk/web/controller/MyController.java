@@ -5,6 +5,7 @@ import com.sk.service.InventoryService;
 import com.sk.service.RecipeService;
 import com.sk.view.InventoryView;
 import com.sk.view.RecipeView;
+import com.sk.view.request.RecipeRequestView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,8 @@ public class MyController {
 
     @Autowired
     private RecipeService recipeService;
+
+    @Autowired
     private InventoryService inventoryService;
 
 
@@ -58,7 +61,8 @@ public class MyController {
 
     @PostMapping("recipes/create")
     @ResponseBody
-    public void createRecipes(Recipe recipe) {
+    public void createRecipes(@RequestBody RecipeRequestView recipe) {
+
         recipeService.createRecipes(recipe);
     }
 }
