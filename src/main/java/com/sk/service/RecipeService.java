@@ -1,6 +1,5 @@
 package com.sk.service;
 
-import com.sk.jpa.entity.Recipe;
 import com.sk.view.RecipeView;
 import com.sk.view.request.RecipeRequestView;
 

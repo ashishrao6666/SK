@@ -7,12 +7,14 @@ import com.sk.repo.RecipeRepo;
 import com.sk.service.RecipeService;
 import com.sk.view.IngredientsView;
 import com.sk.view.RecipeView;
+import com.sk.view.request.IngredientsRequestView;
 import com.sk.view.request.RecipeRequestView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
@@ -26,12 +28,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<RecipeView> getRecipes() {
         List<Recipe> recipeList = recipeRepo.findAll();
-        List<RecipeView> recipeViewList = new ArrayList<>();
-        for (Recipe recipe : recipeList) {
-            RecipeView recipeView = getRecipeView(recipe);
-            recipeViewList.add(recipeView);
-        }
-        return recipeViewList;
+        return recipeList.stream().map(this::getRecipeView).collect(Collectors.toList());
     }
 
     @Override
@@ -55,13 +52,24 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepo.deleteById(id);
     }
 
+
     @Override
     public void createRecipes(RecipeRequestView recipeRequestView) {
         Recipe recipe = new Recipe();
         recipe.setIntr(recipeRequestView.getInstructions());
         recipe.setName(recipeRequestView.getName());
         recipeRepo.save(recipe);
-        System.out.println("Resasdsd" + recipe.getId());
+        List<IngredientsRequestView> ingredientsRequestViews = recipeRequestView.getIngredients();
+        List<Ingredients> ingredientsList = new ArrayList<>();
+        for(IngredientsRequestView ingredientsRequestView : ingredientsRequestViews){
+            Ingredients ingredients = new Ingredients();
+            ingredients.setName((ingredientsRequestView.getName()));
+            ingredients.setQuantity((ingredientsRequestView.getQuantity()));
+            ingredients.setRecipeid(recipe.getId());
+            ingredientsList.add(ingredients);
+        }
+        ingredientsRepo.saveAll(ingredientsList);
+        System.out.println("Recipe " + recipe.getId() + "created");
     }
 
 
@@ -71,7 +79,7 @@ public class RecipeServiceImpl implements RecipeService {
         recipeView.setName(recipe.getName());
         recipeView.setInstructions(recipe.getIntr());
         List<Ingredients> ingredientsList = recipe.getIngredients();
-        List <IngredientsView> ingredientsViews = new ArrayList<>();
+        List<IngredientsView> ingredientsViews = new ArrayList<>();
         for (Ingredients ingredients : ingredientsList) {
             IngredientsView ingredientsView = new IngredientsView();
             ingredientsView.setName(ingredients.getName());

@@ -16,6 +16,8 @@ public class Ingredients implements Serializable {
     private String name;
     @Column(name = "i_quantity")
     private int quantity;
+    @Column(name ="recipe_id")
+    private int recipeid;
 
     public int getId() {
         return id;
@@ -39,5 +41,13 @@ public class Ingredients implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getRecipeid() {
+        return recipeid;
+    }
+
+    public void setRecipeid(int recipeid) {
+        this.recipeid = recipeid;
     }
 }
