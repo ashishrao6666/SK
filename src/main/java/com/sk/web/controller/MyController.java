@@ -39,7 +39,6 @@ public class MyController {
         return recipeService.getRecipeById(id);
     }
 
-
     @GetMapping("/clear")
     @ResponseBody
     public String deleted() {
@@ -54,16 +53,22 @@ public class MyController {
         return "recipe id number " +id +" deleted";
     }
 
-    @GetMapping("/inventory")
-    @ResponseBody
-    public List<InventoryView> getAllInventories() {
-        return inventoryService.getInventory();
-    }
-
     @PostMapping("recipes/create")
     @ResponseBody
     public void createRecipes(@RequestBody RecipeRequestView recipe) {
 
         recipeService.createRecipes(recipe);
+    }
+
+    @PatchMapping("/recipes/{id}")
+    @ResponseBody
+    public void patchRecipeById(@PathVariable int id, @RequestBody RecipeRequestView recipe) {
+        recipeService.getRecipeById(id);
+    }
+
+    @GetMapping("/inventory")
+    @ResponseBody
+    public List<InventoryView> getAllInventories() {
+        return inventoryService.getInventory();
     }
 }

@@ -52,6 +52,15 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepo.deleteById(id);
     }
 
+    @Override
+    public void patchRecipeById(int id, RecipeRequestView recipeRequestView) {
+        final Recipe recipe = recipeRepo.findById(id);
+        if( recipe != null){
+            recipe.setName(recipeRequestView.getName());
+            recipe.setIntr(recipeRequestView.getInstructions());
+            recipeRepo.save(recipe);
+        }
+    }
 
     @Override
     public void createRecipes(RecipeRequestView recipeRequestView) {

@@ -11,6 +11,7 @@ public interface RecipeService {
     public void deleteAll();
     void deleteById(int id);
     void createRecipes(RecipeRequestView recipeRequestView);
+    void patchRecipeById(int id, RecipeRequestView recipeRequestView);
 }
 
 
