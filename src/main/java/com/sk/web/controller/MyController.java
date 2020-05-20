@@ -5,6 +5,7 @@ import com.sk.service.InventoryService;
 import com.sk.service.RecipeService;
 import com.sk.view.InventoryView;
 import com.sk.view.RecipeView;
+import com.sk.view.request.InventoryRequestView;
 import com.sk.view.request.RecipeRequestView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -70,5 +71,11 @@ public class MyController {
     @ResponseBody
     public List<InventoryView> getAllInventories() {
         return inventoryService.getInventory();
+    }
+
+    @PostMapping("/inventory/fill")
+    @ResponseBody
+    public void createInventory(@RequestBody InventoryRequestView inventory) {
+        inventoryService.createInventory(inventory);
     }
 }
