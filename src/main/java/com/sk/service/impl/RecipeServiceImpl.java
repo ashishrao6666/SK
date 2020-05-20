@@ -57,7 +57,6 @@ public class RecipeServiceImpl implements RecipeService {
         final Recipe recipe = recipeRepo.findById(id);
         if( recipe != null){
             recipe.setName(recipeRequestView.getName());
-            recipe.setIntr(recipeRequestView.getInstructions());
             recipeRepo.save(recipe);
         }
     }

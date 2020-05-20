@@ -63,8 +63,8 @@ public class MyController {
 
     @PatchMapping("/recipes/{id}")
     @ResponseBody
-    public void patchRecipeById(@PathVariable int id, @RequestBody RecipeRequestView recipe) {
-        recipeService.getRecipeById(id);
+    public void patchRecipeById(@PathVariable int id, @RequestBody RecipeRequestView recipeRequestView) {
+        recipeService.patchRecipeById(id,recipeRequestView);
     }
 
     @GetMapping("/inventory")
