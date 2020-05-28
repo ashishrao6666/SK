@@ -1,11 +1,23 @@
 package com.sk.view.request;
 
+import java.util.List;
+
 public class InventoryRequestView {
+    private int id;
     private int quantity;
     private String name;
+    private List<InventoryRequestView> inventory;
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setQuantity(int quantity) {
@@ -18,5 +30,9 @@ public class InventoryRequestView {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<InventoryRequestView> getInventory() {
+        return inventory;
     }
 }

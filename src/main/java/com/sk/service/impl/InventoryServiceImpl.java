@@ -30,10 +30,15 @@ public class InventoryServiceImpl implements InventoryService
 
     @Override
     public void createInventory(InventoryRequestView inventoryRequestView) {
-        Inventory inventory = new Inventory();
-        inventory.setInvName(inventoryRequestView.getName());
-        inventory.setInvQuantity(inventoryRequestView.getQuantity());
-        inventoryRepo.save(inventory);
+        List<InventoryRequestView> inventoryRequestViews = inventoryRequestView.getInventory();
+        List<Inventory> inventoryList = new ArrayList<>();
+        for(InventoryRequestView inventoryRequestView1 : inventoryRequestViews){
+            Inventory inventory = new Inventory();
+            inventory.setInvName(inventoryRequestView1.getName());
+            inventory.setInvQuantity(inventoryRequestView1.getQuantity());
+            inventoryList.add(inventory);
+        }
+        inventoryRepo.saveAll(inventoryList);
     }
 
     private InventoryView getInventoryView(Inventory inventory) {
