@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface InventoryRepo extends CrudRepository<Inventory, Integer> {
     List<Inventory> findAll();
+    Inventory findByInvNameIgnoreCase(String name);
 }

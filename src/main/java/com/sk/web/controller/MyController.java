@@ -75,7 +75,7 @@ public class MyController {
 
     @PostMapping("/inventory/fill")
     @ResponseBody
-    public void createInventory(@RequestBody InventoryRequestView inventory) {
+    public void createInventory(@RequestBody List<InventoryRequestView> inventory) {
         inventoryService.createInventory(inventory);
     }
 }

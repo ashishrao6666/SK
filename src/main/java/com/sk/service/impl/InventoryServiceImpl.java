@@ -29,16 +29,34 @@ public class InventoryServiceImpl implements InventoryService
     }
 
     @Override
-    public void createInventory(InventoryRequestView inventoryRequestView) {
-        List<InventoryRequestView> inventoryRequestViews = inventoryRequestView.getInventory();
-        List<Inventory> inventoryList = new ArrayList<>();
-        for(InventoryRequestView inventoryRequestView1 : inventoryRequestViews){
-            Inventory inventory = new Inventory();
-            inventory.setInvName(inventoryRequestView1.getName());
-            inventory.setInvQuantity(inventoryRequestView1.getQuantity());
-            inventoryList.add(inventory);
+    public void createInventory(List<InventoryRequestView> inventoryRequestViews) {
+        for (InventoryRequestView inventoryRequestView : inventoryRequestViews) {
+            Inventory dbInv = inventoryRepo.findByInvNameIgnoreCase(inventoryRequestView.getName());
+            if(dbInv == null){
+                Inventory inventory = new Inventory();
+                inventory.setInvName(inventoryRequestView.getName());
+                inventory.setInvQuantity(inventoryRequestView.getQuantity());
+                inventoryRepo.save(inventory);
+            }
+            else {
+                int newQty = dbInv.getInvQuantity() + inventoryRequestView.getQuantity();
+                dbInv.setInvQuantity(newQty);
+                inventoryRepo.save(dbInv);
+            }
+
         }
-        inventoryRepo.saveAll(inventoryList);
+        /*Inventory dbInv = inventoryRepo.findByInvName(inventoryRequestView.getName());
+        if(dbInv != null) {
+            List<InventoryRequestView> inventoryRequestViews = inventoryRequestView.getInventory();
+            List<Inventory> inventoryList = new ArrayList<>();
+            for (InventoryRequestView inventoryRequestView1 : inventoryRequestViews) {
+                Inventory inventory = new Inventory();
+                inventory.setInvName(inventoryRequestView1.getName());
+                inventory.setInvQuantity(inventoryRequestView1.getQuantity());
+                inventoryList.add(inventory);
+            }
+            inventoryRepo.saveAll(inventoryList);
+        }*/
     }
 
     private InventoryView getInventoryView(Inventory inventory) {

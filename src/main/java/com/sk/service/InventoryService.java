@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface InventoryService {
     public List<InventoryView> getInventory();
-    void createInventory(InventoryRequestView inventoryRequestView);
+    void createInventory(List<InventoryRequestView> inventoryRequestView);
 }

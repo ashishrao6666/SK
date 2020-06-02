@@ -6,7 +6,6 @@ public class InventoryRequestView {
     private int id;
     private int quantity;
     private String name;
-    private List<InventoryRequestView> inventory;
 
     public int getQuantity() {
         return quantity;
@@ -32,7 +31,4 @@ public class InventoryRequestView {
         this.name = name;
     }
 
-    public List<InventoryRequestView> getInventory() {
-        return inventory;
-    }
 }
