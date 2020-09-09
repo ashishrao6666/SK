@@ -45,18 +45,6 @@ public class InventoryServiceImpl implements InventoryService
             }
 
         }
-        /*Inventory dbInv = inventoryRepo.findByInvName(inventoryRequestView.getName());
-        if(dbInv != null) {
-            List<InventoryRequestView> inventoryRequestViews = inventoryRequestView.getInventory();
-            List<Inventory> inventoryList = new ArrayList<>();
-            for (InventoryRequestView inventoryRequestView1 : inventoryRequestViews) {
-                Inventory inventory = new Inventory();
-                inventory.setInvName(inventoryRequestView1.getName());
-                inventory.setInvQuantity(inventoryRequestView1.getQuantity());
-                inventoryList.add(inventory);
-            }
-            inventoryRepo.saveAll(inventoryList);
-        }*/
     }
 
     private InventoryView getInventoryView(Inventory inventory) {
